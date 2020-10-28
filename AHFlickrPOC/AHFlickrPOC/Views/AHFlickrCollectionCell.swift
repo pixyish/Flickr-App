@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AHSearchCell: UICollectionViewCell {
+class AHFlickrCollectionCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
