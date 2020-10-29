@@ -24,15 +24,22 @@ class AHFlickrCollectionCell: UICollectionViewCell {
         imgView.image = nil
     }
     
-    func show(info:Photo) {
-        imgView.image = nil 
-        activityIndicator.startAnimating()
-        self.imgView.setImg(imgName: "\(info.id ?? "").jpg",  url: URLs.photoApiUrlString(photoIno:info)) { (isSuccess) in
-            if isSuccess {
+    func show(info:Photo, isCancelled:Bool = false) {
+        imgView.image = nil
+        if isCancelled {
+            if let img = self.imgView.cacheImg(imgName: "\(info.id ?? "").jpg") {
+                self.imgView.image = img
+            } else {
+                self.imgView.image  = UIImage(named: AHConstant.placeHolderImg)
+            }
+        } else {
+            activityIndicator.startAnimating()
+            self.imgView.setImg(imgName: "\(info.id ?? "").jpg",  url: URLs.photoApiUrlString(photoIno:info)) { (isSuccess) in
+                if !isSuccess {
+                    self.imgView.image  = UIImage(named: AHConstant.placeHolderImg)
+                }
                 self.activityIndicator.stopAnimating()
             }
         }
-        
-        
     }
 }

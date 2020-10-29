@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     open var cellSize = 0
     var photos:Photos?
     let refreshControl = UIRefreshControl()
-    
+    var isCancelled = false
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,13 @@ class ViewController: UIViewController {
         self.setUI()
     }
     
+    
     override func viewDidLayoutSubviews() {
         cellSize = Int((flickrCollectionView.frame.size.width/2)-15)
+    }
+    
+    @IBAction func cancelAll(_ sender: UIBarButtonItem) {
+        isCancelled = true
     }
     
     //pull feature

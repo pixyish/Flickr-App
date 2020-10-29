@@ -14,6 +14,7 @@ struct AHConstant {
     static let internetOfflineTitle = "The Internet connection appears to be offline"
     static let internetOfflineMsg = "please pull to refresh when you are connected to the internet"
     static let cacheImg = true
+    static let placeHolderImg = "placeHolderImg"
 }
 
 struct URLs {

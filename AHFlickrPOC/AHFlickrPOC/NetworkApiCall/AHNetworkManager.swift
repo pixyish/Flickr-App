@@ -50,7 +50,8 @@ enum ApiStatus:String {
 class AHNetworkManager: NSObject {
     static let sharedInstance = AHNetworkManager()
     
-//    let session = URLSession(configuration: .default)
+    let session = URLSession(configuration: .default)
+    var task:URLSessionDataTask?
     func execute(requestMethod:RequestMethod,path:String,params:[String:Any]?,completion:@escaping(_ status:ApiStatus,_ response:Any?) -> Void) {
         
         guard let request = AHURLRequest(reqestMethod: requestMethod, urlString: path, params: params) else {
@@ -60,7 +61,6 @@ class AHNetworkManager: NSObject {
             return
         }
         
-        let session = URLSession(configuration: .default)
         var apiStatus = ApiStatus.failed
         
         let status = Reach().connectionStatus()
@@ -87,7 +87,6 @@ class AHNetworkManager: NSObject {
     }
     
     func getImage(path:String,completion:@escaping(_ img:UIImage?) -> Void) -> Void {
-        let session = URLSession(configuration: .default)
         var apiStatus = ApiStatus.failed
         
         guard let request = AHURLRequest(reqestMethod: .get, urlString: path, params: nil) else {
@@ -96,8 +95,7 @@ class AHNetworkManager: NSObject {
                    }
                    return
                }
-        
-        session.dataTask(with: request as URLRequest) { (data, response, error) in
+       task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             DispatchQueue.main.async(execute: {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
                 apiStatus = ApiStatus.statusCode(code: statusCode ?? 999)
@@ -107,6 +105,7 @@ class AHNetworkManager: NSObject {
                     completion(nil)
                 }
             })
-        }.resume()
+        }
+        task?.resume()
     }
 }

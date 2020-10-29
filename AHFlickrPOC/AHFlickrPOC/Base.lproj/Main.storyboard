@@ -54,7 +54,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Flickr Search" id="kGj-Cb-7mO"/>
+                    <navigationItem key="navigationItem" title="Flickr Search" id="kGj-Cb-7mO">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="cb1-wG-Rli">
+                            <connections>
+                                <action selector="cancelAll:" destination="BYZ-38-t0r" id="w7W-t0-Zkh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flickrCollectionView" destination="qsX-QE-ZHL" id="QSF-3R-wLG"/>
                     </connections>

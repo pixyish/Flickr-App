@@ -19,7 +19,7 @@ extension ViewController:UICollectionViewDataSource {
         
         let flickrCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: flickrReuseIdentifier, for: indexPath) as! AHFlickrCollectionCell
         if let pictures = self.photos, let pic = pictures.photo?[indexPath.row] {
-            flickrCollectionCell.show(info: pic)
+            flickrCollectionCell.show(info: pic,isCancelled:self.isCancelled)
         }
         return flickrCollectionCell
     }
