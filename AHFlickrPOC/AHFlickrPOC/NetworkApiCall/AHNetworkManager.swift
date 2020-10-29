@@ -61,4 +61,28 @@ class AHNetworkManager: NSObject {
             })
         }.resume()        
     }
+    
+    func getImage(path:String,completion:@escaping(_ img:UIImage?) -> Void) -> Void {
+        let session = URLSession(configuration: .default)
+        var apiStatus = ApiStatus.failed
+        
+        guard let request = AHURLRequest(reqestMethod: .get, urlString: path, params: nil) else {
+                   DispatchQueue.main.async {
+                       completion(nil)
+                   }
+                   return
+               }
+        
+        session.dataTask(with: request as URLRequest) { (data, response, error) in
+            DispatchQueue.main.async(execute: {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                apiStatus = ApiStatus.statusCode(code: statusCode ?? 999)
+                if apiStatus.isSuccess,let imgData = data, let img = UIImage(data: imgData) {
+                    completion(img)
+                } else {
+                    completion(nil)
+                }
+            })
+        }.resume()
+    }
 }

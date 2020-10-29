@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak private var flickrCollectionView: UICollectionView!
-    
+    var queue: OperationQueue?
     private var flickrReuseIdentifier = "flickrSearch"
     private var cellSize = 0
+    var photos:Photos?
     
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -27,6 +28,11 @@ class ViewController: UIViewController {
         cellSize = Int((flickrCollectionView.frame.size.width/2)-15)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        cellSize = Int((flickrCollectionView.frame.size.width/2)-15)
+        self.flickrCollectionView.reloadData()
+    }
+    
     //MARK:- Private Methods
     func setUI() {
         self.registerXib()
@@ -34,11 +40,8 @@ class ViewController: UIViewController {
     
     func parseResponse(_ data: Data) -> FlickrSearchResult? {
         do {
-            
             let decoder = JSONDecoder()
             let responseModel = try? decoder.decode(FlickrSearchResult.self, from: data)
-            
-            print(responseModel.self)
             return responseModel
         } catch {
             print("Data parsing error: \(error.localizedDescription)")
@@ -46,20 +49,18 @@ class ViewController: UIViewController {
         }
     }
     
-    
     func callApi()  {
-        AHNetworkManager.sharedInstance.execute(requestMethod: .get, path: AHConstant.flickrUrl, params: nil) { (apiStatus, response) in
+        
+        AHNetworkManager.sharedInstance.execute(requestMethod: .get, path: AHConstant.flickrUrl, params: nil)  { [weak self] (apiStatus, response) in
             if apiStatus.isSuccess {
-                guard let stringResponse = String(data: response as! Data, encoding: String.Encoding.utf8) else {
-                    return
-                }
-                
-                print("Respone: \(stringResponse)")
-                let jsonData = stringResponse.data(using: .utf8)!
-                   if let model = self.parseResponse(jsonData) {
+//                guard let stringResponse = String(data: response as! Data, encoding: String.Encoding.utf8) else {
+//                    return
+//                }
+//                let jsonData = stringResponse.data(using: .utf8)!
+                if let model = self?.parseResponse(response as! Data) {
                        if let stat = model.stat, stat.uppercased().contains("OK") {
-                           let photos = model.photos
-                        
+                            self?.photos = model.photos
+                            self?.flickrCollectionView.reloadData()
                        } else {
                         
                        }
@@ -67,7 +68,11 @@ class ViewController: UIViewController {
                     
                    }
             } else {
-                AHUtils.showAlert(ttl: apiStatus.title, msg: "", vc: self)
+                if let self = self {
+                    AHUtils.showAlert(ttl: apiStatus.title, msg: "", vc: self
+                        
+                    )
+                }
             }
         }
     }
@@ -84,12 +89,15 @@ class ViewController: UIViewController {
 extension ViewController:UICollectionViewDataSource {
     //1
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.photos?.photo?.count ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let flickrCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: flickrReuseIdentifier, for: indexPath) as! AHFlickrCollectionCell
+        if let pictures = self.photos, let pic = pictures.photo?[indexPath.row] {
+            flickrCollectionCell.show(info: pic)
+        }
         return flickrCollectionCell
     }
 }
