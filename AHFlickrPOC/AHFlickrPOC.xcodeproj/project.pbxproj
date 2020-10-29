@@ -24,7 +24,7 @@
 		4B7E687E25496F1C004DA62E /* AHFlickrCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7E687C25496F1C004DA62E /* AHFlickrCollectionCell.swift */; };
 		4B7E687F25496F1C004DA62E /* AHFlickrCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E687D25496F1C004DA62E /* AHFlickrCollectionCell.xib */; };
 		4B7E688225498373004DA62E /* AHURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7E688125498373004DA62E /* AHURLRequest.swift */; };
-		4BEB784D254A8B55006D7E41 /* Ext_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB784C254A8B55006D7E41 /* Ext_ImageView.swift */; };
+		4BEB784F254AC71A006D7E41 /* Extentsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB784E254AC71A006D7E41 /* Extentsions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,7 @@
 		4B7E687C25496F1C004DA62E /* AHFlickrCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHFlickrCollectionCell.swift; sourceTree = "<group>"; };
 		4B7E687D25496F1C004DA62E /* AHFlickrCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AHFlickrCollectionCell.xib; sourceTree = "<group>"; };
 		4B7E688125498373004DA62E /* AHURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHURLRequest.swift; sourceTree = "<group>"; };
-		4BEB784C254A8B55006D7E41 /* Ext_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_ImageView.swift; sourceTree = "<group>"; };
+		4BEB784E254AC71A006D7E41 /* Extentsions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentsions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			children = (
 				4B174AAD2549DF6E0049205D /* AHConstant.swift */,
 				4B174AAF2549DF850049205D /* AHUtils.swift */,
-				4BEB784C254A8B55006D7E41 /* Ext_ImageView.swift */,
+				4BEB784E254AC71A006D7E41 /* Extentsions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -328,10 +328,10 @@
 				4B66732125498BD4001F1CD0 /* AHNetworkManager.swift in Sources */,
 				4B174AB72549E4660049205D /* AHFlickrResult.swift in Sources */,
 				4B174AB02549DF850049205D /* AHUtils.swift in Sources */,
-				4BEB784D254A8B55006D7E41 /* Ext_ImageView.swift in Sources */,
 				4B174AB52549E1EA0049205D /* Photo.swift in Sources */,
 				4B7E6850254968C9004DA62E /* ViewController.swift in Sources */,
 				4B7E684C254968C9004DA62E /* AppDelegate.swift in Sources */,
+				4BEB784F254AC71A006D7E41 /* Extentsions.swift in Sources */,
 				4B7E684E254968C9004DA62E /* SceneDelegate.swift in Sources */,
 				4B7E688225498373004DA62E /* AHURLRequest.swift in Sources */,
 				4B174AAE2549DF6E0049205D /* AHConstant.swift in Sources */,
