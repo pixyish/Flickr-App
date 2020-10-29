@@ -20,19 +20,59 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.setUI()
+        self.callApi()
     }
     
     override func viewDidLayoutSubviews() {
         cellSize = Int((flickrCollectionView.frame.size.width/2)-15)
     }
     
-    //MARK:- Private Method
+    //MARK:- Private Methods
     func setUI() {
         self.registerXib()
     }
     
+    func parseResponse(_ data: Data) -> FlickrSearchResult? {
+        do {
+            
+            let decoder = JSONDecoder()
+            let responseModel = try? decoder.decode(FlickrSearchResult.self, from: data)
+            
+            print(responseModel.self)
+            return responseModel
+        } catch {
+            print("Data parsing error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    
+    func callApi()  {
+        AHNetworkManager.sharedInstance.execute(requestMethod: .get, path: AHConstant.flickrUrl, params: nil) { (apiStatus, response) in
+            if apiStatus.isSuccess {
+                guard let stringResponse = String(data: response as! Data, encoding: String.Encoding.utf8) else {
+                    return
+                }
+                
+                print("Respone: \(stringResponse)")
+                let jsonData = stringResponse.data(using: .utf8)!
+                   if let model = self.parseResponse(jsonData) {
+                       if let stat = model.stat, stat.uppercased().contains("OK") {
+                           let photos = model.photos
+                        
+                       } else {
+                        
+                       }
+                   } else {
+                    
+                   }
+            } else {
+                AHUtils.showAlert(ttl: apiStatus.title, msg: "", vc: self)
+            }
+        }
+    }
+    
     func registerXib()  {
-        
         let collectionNib = UINib(nibName: "AHFlickrCollectionCell", bundle: nil)
         self.flickrCollectionView.register(collectionNib, forCellWithReuseIdentifier: flickrReuseIdentifier)
         self.flickrCollectionView.reloadData()
