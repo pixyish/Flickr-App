@@ -31,6 +31,4 @@ class AHURLRequest: NSMutableURLRequest {
         self.httpMethod = reqestMethod.rawValue
         self.addValue("application/json", forHTTPHeaderField: "Content-Type")
     }
-    
-    
 }

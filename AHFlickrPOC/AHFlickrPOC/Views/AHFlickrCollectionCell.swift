@@ -10,7 +10,11 @@ import UIKit
 
 class AHFlickrCollectionCell: UICollectionViewCell {
     @IBOutlet weak private var imgView:UIImageView!
-    @IBOutlet weak private var lbl:UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.hidesWhenStopped = true
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +25,14 @@ class AHFlickrCollectionCell: UICollectionViewCell {
     }
     
     func show(info:Photo) {
-        self.imgView.setImg(url: URLs.photoApiUrlString(photoIno:info))
+        imgView.image = nil 
+        activityIndicator.startAnimating()
+        self.imgView.setImg(imgName: "\(info.id ?? "").jpg",  url: URLs.photoApiUrlString(photoIno:info)) { (isSuccess) in
+            if isSuccess {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        
     }
 }

@@ -25,6 +25,8 @@
 		4B7E687F25496F1C004DA62E /* AHFlickrCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E687D25496F1C004DA62E /* AHFlickrCollectionCell.xib */; };
 		4B7E688225498373004DA62E /* AHURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7E688125498373004DA62E /* AHURLRequest.swift */; };
 		4BEB784F254AC71A006D7E41 /* Extentsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB784E254AC71A006D7E41 /* Extentsions.swift */; };
+		4BEB7852254B267D006D7E41 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB7851254B267D006D7E41 /* Reach.swift */; };
+		4BEB7854254B2D6B006D7E41 /* AHViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB7853254B2D6B006D7E41 /* AHViewController+Delegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		4B7E687D25496F1C004DA62E /* AHFlickrCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AHFlickrCollectionCell.xib; sourceTree = "<group>"; };
 		4B7E688125498373004DA62E /* AHURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHURLRequest.swift; sourceTree = "<group>"; };
 		4BEB784E254AC71A006D7E41 /* Extentsions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentsions.swift; sourceTree = "<group>"; };
+		4BEB7851254B267D006D7E41 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		4BEB7853254B2D6B006D7E41 /* AHViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AHViewController+Delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,17 +143,19 @@
 		4B7E684A254968C9004DA62E /* AHFlickrPOC */ = {
 			isa = PBXGroup;
 			children = (
+				4B7E684B254968C9004DA62E /* AppDelegate.swift */,
+				4BEB7850254B267D006D7E41 /* Reachabilty */,
 				4B174AB12549E1AF0049205D /* Models */,
 				4B174AAC2549DF5A0049205D /* Utils */,
 				4B7E6880254979C7004DA62E /* NetworkApiCall */,
 				4B7E687B25496EA9004DA62E /* Views */,
-				4B7E684B254968C9004DA62E /* AppDelegate.swift */,
 				4B7E684D254968C9004DA62E /* SceneDelegate.swift */,
 				4B7E684F254968C9004DA62E /* ViewController.swift */,
 				4B7E6851254968C9004DA62E /* Main.storyboard */,
 				4B7E6854254968CE004DA62E /* Assets.xcassets */,
 				4B7E6856254968CE004DA62E /* LaunchScreen.storyboard */,
 				4B7E6859254968CE004DA62E /* Info.plist */,
+				4BEB7853254B2D6B006D7E41 /* AHViewController+Delegate.swift */,
 			);
 			path = AHFlickrPOC;
 			sourceTree = "<group>";
@@ -188,6 +194,14 @@
 				4B66732025498BD4001F1CD0 /* AHNetworkManager.swift */,
 			);
 			path = NetworkApiCall;
+			sourceTree = "<group>";
+		};
+		4BEB7850254B267D006D7E41 /* Reachabilty */ = {
+			isa = PBXGroup;
+			children = (
+				4BEB7851254B267D006D7E41 /* Reach.swift */,
+			);
+			path = Reachabilty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,9 +345,11 @@
 				4B174AB52549E1EA0049205D /* Photo.swift in Sources */,
 				4B7E6850254968C9004DA62E /* ViewController.swift in Sources */,
 				4B7E684C254968C9004DA62E /* AppDelegate.swift in Sources */,
+				4BEB7852254B267D006D7E41 /* Reach.swift in Sources */,
 				4BEB784F254AC71A006D7E41 /* Extentsions.swift in Sources */,
 				4B7E684E254968C9004DA62E /* SceneDelegate.swift in Sources */,
 				4B7E688225498373004DA62E /* AHURLRequest.swift in Sources */,
+				4BEB7854254B2D6B006D7E41 /* AHViewController+Delegate.swift in Sources */,
 				4B174AAE2549DF6E0049205D /* AHConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

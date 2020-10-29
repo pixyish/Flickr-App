@@ -16,11 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="TF4-M4-295">
-                                <rect key="frame" x="10" y="44" width="300" height="56"/>
+                                <rect key="frame" x="10" y="44" width="300" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="C6w-F3-tIT"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="3xY-Mo-PZq"/>
+                                </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qsX-QE-ZHL">
-                                <rect key="frame" x="5" y="110" width="310" height="448"/>
+                                <rect key="frame" x="5" y="114" width="310" height="444"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vsH-a8-F2H">
                                     <size key="itemSize" width="107" height="95"/>
@@ -40,9 +46,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TF4-M4-295" secondAttribute="trailing" constant="10" id="6hv-6I-gLe"/>
                             <constraint firstAttribute="bottom" secondItem="qsX-QE-ZHL" secondAttribute="bottom" constant="10" id="95A-7e-EAz"/>
                             <constraint firstItem="qsX-QE-ZHL" firstAttribute="top" secondItem="TF4-M4-295" secondAttribute="bottom" constant="10" id="9vl-Ij-ib9"/>
-                            <constraint firstItem="TF4-M4-295" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="FSX-4m-JgD"/>
                             <constraint firstItem="TF4-M4-295" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="Q2W-Be-GtF"/>
                             <constraint firstItem="qsX-QE-ZHL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="lXo-B3-5pQ"/>
+                            <constraint firstItem="TF4-M4-295" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ovK-QC-9ad"/>
                             <constraint firstAttribute="trailing" secondItem="qsX-QE-ZHL" secondAttribute="trailing" constant="5" id="tTL-UT-tVY"/>
                             <constraint firstItem="qsX-QE-ZHL" firstAttribute="top" secondItem="TF4-M4-295" secondAttribute="bottom" constant="10" id="wfw-9i-NcO"/>
                         </constraints>
